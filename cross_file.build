@@ -1,0 +1,56 @@
+[binaries]
+#c       = 'clang-17'
+#cpp     = 'clang++-17'
+#ld      = 'lld-link'
+#ar      = 'llvm-ar'
+#as      = 'llvm-as'
+#size    = 'llvm-size'
+c       = 'arm-none-eabi-gcc'
+cpp     = 'arm-none-eabi-g++'
+ld      = 'arm-none-eabi-ld'
+ar      = 'arm-none-eabi-ar'
+as      = 'arm-none-eabi-as'
+size    = 'arm-none-eabi-size'
+objdump = 'arm-none-eabi-objdump'
+objcopy = 'arm-none-eabi-objcopy'
+strip   = 'arm-none-eabi-strip'
+
+[properties]
+c_args = [
+            '-mthumb',
+            '-fshort-enums',
+            '-fmessage-length=0',
+            '-funsigned-char',
+            '-ffunction-sections',
+            '-fdata-sections',
+
+            '-Wall',
+            '-ffreestanding',
+            '-Wno-reserved-id-macro',
+            '-Wno-unused-macros',
+            '-Wno-documentation',
+            '-Wno-parentheses-equality',
+            '-Wno-unused-parameter',
+            '-Wno-padded',
+            '-Wno-documentation-unknown-command',
+            '-Wno-missing-noreturn',
+            '-Wno-undef',
+            '-Wno-keyword-macro',
+            '-Wno-cast-align',
+            '-Wno-conversion',
+            '-Wno-covered-switch-default',
+            '-Wno-empty-translation-unit',
+            '-Wno-switch-enum',
+            '-Wno-missing-variable-declarations']
+
+c_link_args = [
+    '-v',
+    '-nostdlib',
+    '-Wl,-Map,output.map',
+    '-flto']
+
+[host_machine]
+system = 'none'
+cpu_family = 'arm'
+cpu = 'cortex-m3'
+endian = 'little'
